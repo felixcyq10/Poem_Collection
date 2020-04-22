@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1; charset=UTF-8">
-<title>永契石跡</title>
+<title>小石跡</title>
 
 <style>
 .collapsible {
@@ -46,20 +46,33 @@
 
 <body bgcolor="f5f5dc">
 
-<iframe src="Res/BGM/poem_bgm3.mp3" allow="autoplay" id="audio" style="display:none" onloadeddata="setHalfVolume()"></iframe>
 
 <button class="collapsible">2020</button>
-<div class="content">
+<div class="content" style="max-height: 100%">
   <table style=" width: 100%; line-height: 40px;" cellspacing="1" cellpadding="40">
     <tbody >
+	
+		<tr>
+			<td style="width: 442px; text-align: center;">
+				<p>
+				骄风傲雨笑空城，<br/>
+				堂堂大道竟无人！<br/>
+				啸声遍传谁与争，<br/>
+				回响作答独自欢。<br/>
+				</p>
+				<p style="text-align: right;">-- 04/21/2020于新泽西Oradell</p>
+			</td>
+			<td style="width: 166px;"><img src="Res/IMG/img5.jpg" height="250" width="350"></td>
+        </tr>
+	
       <tr>
         <td style="width: 442px; text-align: center;">
           <p>
-            开春未宁焚心炎<br />
-            枯冬又笼木兰峰<br />
-            十目难观琉璃海<br />
-            百口再戏众生林<br />
-            苦渡几转，重归精金台<br />
+            开春未宁焚心炎<br/>
+            枯冬又笼木兰峰<br/>
+            十目难观琉璃海<br/>
+            百口再戏众生林<br/>
+            苦渡几转，重归精金台<br/>
           </p>
           <p style="text-align: right;">-- 02/02/2020于新泽西Paramus</p>
         </td>
@@ -261,8 +274,12 @@
   </table>
 </div>
 
+<audio id="myAudio" src="Res/BGM/poem_bgm3.mp3" preload="auto"> </audio>
+
 <script>
 var coll = document.getElementsByClassName("collapsible");
+var myAudio = document.getElementById("myAudio");
+var count = 1;
 var i;
 
 for (i = 0; i < coll.length; i++) {
@@ -274,6 +291,22 @@ for (i = 0; i < coll.length; i++) {
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
     }
+	
+	if (content.style.maxHeight.slice(0,-2) > 0) {
+		count++;
+	} else {
+		count--;
+	}
+		
+	if (!myAudio.currentTime > 0 || myAudio.paused){
+		myAudio.play()
+	}
+	
+	if (count == 0){
+		myAudio.pause()
+	}
+	
+
   });
 }
 </script>
